@@ -18,12 +18,12 @@ public class WeatherAPI {
 	 * @param String
 	 * @return Float
 	 */
-	public Float GetWeatherApiCity(String cityName) {
+	public Map<Object, Object> GetWeatherApiCity(String cityName) {
 		Response response;
 		response = UtilityFactory.getRestApiUtils().get(cityName);
-		Map<String, Float> tempreture = response.jsonPath().getMap("main");
-		System.out.println(tempreture);
-		return tempreture.get("temp");
+		Map<Object, Object> mainResponse = response.jsonPath().getMap("main");
+		System.out.println(mainResponse);
+		return mainResponse;
 
 	}
 
@@ -31,14 +31,14 @@ public class WeatherAPI {
 	 * Returns the value selected in the temperature in deg.
 	 *
 	 * @param String,String
-	 * @return Float
+	 * @return Map
 	 */
-	public Float GetWeatherApiCity(String cityName, String state) {
+	public Map<Object, Object> GetWeatherApiCity(String cityName, String state) {
 		Response response;
 		response = UtilityFactory.getRestApiUtils().get(cityName);
-		Map<String, Float> tempreture = response.jsonPath().getMap("main");
-		System.out.println(tempreture);
-		return tempreture.get("temp");
+		Map<Object, Object> mainResponse = response.jsonPath().getMap("main");
+		System.out.println(mainResponse);
+		return mainResponse;
 
 	}
 
@@ -46,15 +46,14 @@ public class WeatherAPI {
 	 * Returns the value selected in the temperature in deg.
 	 *
 	 * @param String,String,String
-	 * @return Float
+	 * @return Map
 	 */
-	public Float GetWeatherApiCity(String cityName, String state, String countryCode) {
+	public Map<Object, Object> GetWeatherApiCity(String cityName, String state, String countryCode) {
 		Response response;
 		response = UtilityFactory.getRestApiUtils().get(cityName);
-		Map<String, Float> tempreture = response.jsonPath().getMap("main");
-		System.out.println(tempreture);
-		return tempreture.get("temp");
-
+		Map<Object, Object> mainResponse = response.jsonPath().getMap("main");
+		System.out.println(mainResponse);
+		return mainResponse;
 	}
 
 }
