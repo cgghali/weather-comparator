@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="EI Test Suite">
+	<test name="Sanity Tests" preserve-order="true">
+		<classes>
+			<class name="com.ghali.automation.phase1.tests.WeatherReportComparatorTest">
+				<methods>
+					<include name="GetWeatherCityTest" />
+					<include name="GetWeatherCityStateTest" />
+					<include name="GetWeatherCityStatePinCodeTest" />
+				</methods>
+			</class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
