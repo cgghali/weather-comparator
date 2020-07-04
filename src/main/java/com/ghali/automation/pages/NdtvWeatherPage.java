@@ -28,16 +28,19 @@ public class NdtvWeatherPage extends AbstractPagesActions {
 	@FindBy(xpath = "//*[@id=\'map_canvas\']")
 	WebElement mapCanvas;
 
+	@FindBy(xpath = "//*[@id='map_canvas']//div[contains(@class,'leaflet-popup-content-wrapper')]/div/div/span[contains(@class,'heading')]/following-sibling::span/following-sibling::span/b")
+	WebElement humidity;
+
 	@FindBy(xpath = "//*[@id='map_canvas']//div[contains(@class,'leaflet-popup-content-wrapper')]/div/div/span[contains(@class,'heading')]/following-sibling::span/following-sibling::span/following-sibling::span/b")
 	WebElement tempDeg;
 
 	@FindBy(xpath = "//*[@id='map_canvas']//div[contains(@class,'leaflet-popup-content-wrapper')]/div/div/span[contains(@class,'heading')]/following-sibling::span/following-sibling::span/following-sibling::span/following-sibling::span/b")
 	WebElement tempFah;
 
-	public float getTempreture(String cityName) {
+	public void selectCity(String cityName) {
 			String fullXpath = String.format(USER_XPATH, cityName);
 			String path = String.format(CITY_SELECTOR_MAP, cityName);
-			String tempString;
+
 			// Search city
 			UtilityFactory.getJavaUtils().sleep(100);
 			try {
@@ -50,8 +53,25 @@ public class NdtvWeatherPage extends AbstractPagesActions {
 				LOG.error("City is not found on the Map");
 			}
 
-			tempString = tempDeg.getText();
+			/*
+			 * tempString = tempDeg.getText(); String[] str = tempString.split(":"); return
+			 * (Float.parseFloat(str[1].trim()));
+			 */
+
+		}
+
+		public float getHumidity() {
+			String tempString;
+			tempString = humidity.getText();
 			String[] str = tempString.split(":");
+			return (Float.parseFloat(str[1].substring(0, str[1].length() - 1)));
+
+		}
+
+		public float getTempretureDeg() {
+			String tempHumidity;
+			tempHumidity = tempDeg.getText();
+			String[] str = tempHumidity.split(":");
 			return (Float.parseFloat(str[1].trim()));
 
 		}
